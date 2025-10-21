@@ -1,0 +1,1030 @@
+views:
+  - type: sections
+    max_columns: 4
+    title: Home
+    path: home
+    icon: mdi:home
+    sections:
+      - type: grid
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: switch.water_pump
+            grid_options:
+              columns: 6
+              rows: 1
+            fill_container: false
+            primary_info: name
+            secondary_info: none
+            tap_action:
+              action: toggle
+          - type: custom:mushroom-entity-card
+            entity: switch.autofill
+            grid_options:
+              columns: 6
+              rows: 1
+            fill_container: false
+            primary_info: name
+            secondary_info: none
+            tap_action:
+              action: toggle
+          - type: gauge
+            entity: sensor.tank_fresh
+            name: Fresh Tank
+            severity:
+              green: 60
+              yellow: 40
+              red: 0
+          - type: gauge
+            entity: sensor.tank_gray
+            name: Black Tank
+            needle: false
+            severity:
+              green: 0
+              yellow: 50
+              red: 60
+          - type: gauge
+            entity: sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
+            name: House Battery
+            needle: false
+            severity:
+              green: 75
+              yellow: 25
+              red: 0
+    header: {}
+    cards: []
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+  - type: masonry
+    path: lights
+    title: Lights
+    icon: mdi:lightbulb
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Entry
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_4
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.accents
+                name: Accents
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Living Room
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                name: Celing
+                secondary_info: none
+                entity: light.switch_6
+              - type: custom:mushroom-light-card
+                name: Mirror
+                secondary_info: none
+                entity: light.switch_8
+              - type: custom:mushroom-light-card
+                name: Dinette
+                secondary_info: none
+                entity: light.switch_50
+              - type: custom:mushroom-light-card
+                entity: light.switch_9
+                secondary_info: none
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_52
+                name: Sconce drvr
+              - type: custom:mushroom-light-card
+                entity: light.switch_10
+                secondary_info: none
+                name: Sconce psngr
+              - type: custom:mushroom-light-card
+                entity: light.accents
+                secondary_info: none
+              - type: custom:mushroom-light-card
+                entity: light.switch_12
+                secondary_info: none
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Kitchen
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                name: Celing
+                secondary_info: none
+                entity: light.switch_47
+              - type: custom:mushroom-light-card
+                entity: light.switch_44
+                secondary_info: none
+              - type: custom:mushroom-light-card
+                entity: light.switch_53
+                secondary_info: none
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_11
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Potty
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                name: All
+                secondary_info: none
+                entity: light.potty_all
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_48
+              - type: custom:mushroom-light-card
+                name: Ceiling
+                secondary_info: none
+                entity: light.switch_42
+              - type: custom:mushroom-light-card
+                name: Cabinet
+                secondary_info: none
+                entity: light.switch_43
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Bedroom
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.switch_45
+                secondary_info: none
+                name: Ceiling
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_46
+                name: Mirror
+              - type: custom:mushroom-light-card
+                entity: light.switch_20
+                secondary_info: none
+                name: Dresser
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_33
+                name: Sconce
+              - type: custom:mushroom-light-card
+                entity: light.switch_36
+                secondary_info: none
+              - type: custom:mushroom-light-card
+                entity: light.switch_37
+                secondary_info: none
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Bath
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                name: Ceiling
+                secondary_info: none
+                entity: light.switch_26
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_18
+              - type: custom:mushroom-light-card
+                name: Shower
+                secondary_info: none
+                entity: light.switch_27
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_30
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Accents
+            alignment: center
+          - type: custom:mushroom-light-card
+            entity: light.accents
+            secondary_info: none
+            name: All accents
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_5
+                name: Driver
+              - type: custom:mushroom-light-card
+                name: Living Room
+                secondary_info: none
+                entity: light.switch_7
+              - type: custom:mushroom-light-card
+                entity: light.switch_49
+                secondary_info: none
+                name: S/O drvr
+              - type: custom:mushroom-light-card
+                entity: light.switch_13
+                secondary_info: none
+                name: S/O psngr
+              - type: custom:mushroom-light-card
+                entity: light.switch_41
+                secondary_info: none
+                name: Potty
+              - type: custom:mushroom-light-card
+                name: Bath
+                secondary_info: none
+                entity: light.switch_17
+              - type: custom:mushroom-light-card
+                name: Bed
+                secondary_info: none
+                entity: light.switch_34
+              - type: custom:mushroom-light-card
+                entity: light.switch_19
+                secondary_info: none
+                name: Dresser
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Exterior
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_3
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_58
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_1
+            columns: 2
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Home
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/home
+        show_entity_picture: false
+        icon: mdi:home
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: Shades
+    path: shades
+    icon: mdi:roller-shade
+    sections:
+      - type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Night
+            icon: mdi:moon-waning-crescent
+            features_position: bottom
+            grid_options:
+              columns: 6
+              rows: 1
+            color: yellow
+          - type: custom:mushroom-template-card
+            primary: Day
+            icon: mdi:white-balance-sunny
+            features_position: bottom
+            grid_options:
+              columns: 6
+              rows: 1
+            color: yellow
+          - type: custom:mushroom-title-card
+            title: All
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-cover-card
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                entity: cover.all_night
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-cover-card
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                entity: cover.all_day
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+          - type: custom:mushroom-title-card
+            title: Entry
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-cover-card
+                entity: cover.shade_7
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                layout: horizontal
+                fill_container: true
+                primary_info: name
+                name: Windshield
+              - type: custom:mushroom-cover-card
+                entity: cover.shade_6
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                fill_container: true
+                layout: horizontal
+                name: Driver
+              - type: custom:mushroom-cover-card
+                entity: cover.shade_8
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                layout: horizontal
+                fill_container: true
+                name: Passenger
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-cover-card
+                entity: cover.shade_2
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                name: Windshield
+              - type: custom:mushroom-cover-card
+                entity: cover.shade_1
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                name: Driver
+              - type: custom:mushroom-cover-card
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                entity: cover.shade_3
+                name: Passenger
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+          - type: custom:mushroom-title-card
+            title: Living Room
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-cover-card
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                fill_container: false
+                entity: cover.shade_50
+                layout: horizontal
+                name: Driver S/O side
+              - type: custom:mushroom-cover-card
+                entity: cover.shade_53
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                name: Driver S/O front
+              - type: custom:mushroom-cover-card
+                entity: cover.shade_55
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                name: Driver S/O back
+              - type: custom:mushroom-cover-card
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                entity: cover.shade_14
+                name: Passenger S/O
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-cover-card
+                entity: cover.shade_50
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                name: Driver S/O side
+              - type: custom:mushroom-cover-card
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                entity: cover.shade_49
+                name: Driver S/O front
+              - type: custom:mushroom-cover-card
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                entity: cover.shade_51
+                name: Driver S/O back
+              - type: custom:mushroom-cover-card
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                entity: cover.shade_10
+                name: Passenger S/O
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+          - type: custom:mushroom-title-card
+            title: Bedroom
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-cover-card
+                icon: mdi:moon-waning-crescent
+                secondary_info: none
+                entity: cover.shade_21
+                name: Dresser
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-cover-card
+                icon: mdi:white-balance-sunny
+                secondary_info: none
+                entity: cover.shade_17
+                name: Dresser
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Home
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/home
+        show_entity_picture: false
+        icon: mdi:home
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: Doors
+    path: doors
+    icon: mdi:door
+    sections:
+      - type: grid
+        cards:
+          - type: custom:mushroom-title-card
+            title: Bedroom
+            alignment: center
+            grid_options:
+              columns: 6
+              rows: auto
+          - type: custom:mushroom-title-card
+            title: Bath
+            alignment: center
+            grid_options:
+              columns: 6
+              rows: auto
+          - type: vertical-stack
+            cards:
+              - show_name: true
+                show_icon: false
+                type: button
+                show_state: false
+                icon: mdi:door-open
+                name: Open
+                entity: light.switch_38
+              - show_name: true
+                show_icon: false
+                type: button
+                name: Close
+                show_state: false
+                entity: light.switch_39
+            grid_options:
+              columns: 6
+              rows: auto
+          - type: vertical-stack
+            cards:
+              - show_name: true
+                show_icon: false
+                type: button
+                show_state: false
+                icon: ""
+                name: Open
+                entity: light.switch_28
+              - show_name: true
+                show_icon: false
+                type: button
+                name: Close
+                show_state: false
+                entity: light.switch_31
+            grid_options:
+              columns: 6
+              rows: auto
+    cards: []
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Home
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/home
+        show_entity_picture: false
+        icon: mdi:home
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: Energy
+    path: energy
+    icon: mdi:transmission-tower
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:battery-high
+            heading: Batteries
+            heading_style: title
+          - type: gauge
+            entity: sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
+            min: 0
+            max: 100
+            needle: true
+            severity:
+              green: 75
+              yellow: 25
+              red: 0
+            name: House
+          - type: gauge
+            entity: >-
+              sensor.victron_mqtt_c0619ab72879_battery_277_auxiliary_battery_voltage
+            unit: V
+            min: 11.5
+            needle: true
+            severity:
+              green: 12
+              yellow: 14
+              red: 0
+            max: 14.5
+            name: Starter
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:home-lightning-bolt-outline
+            heading: Power Flow
+            heading_style: title
+          - type: custom:power-flow-card-plus
+            entities:
+              battery:
+                entity: >-
+                  sensor.victron_mqtt_c0619ab72879_vebus_276_vebus_inverter_dc_power
+                state_of_charge: >-
+                  sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
+              grid:
+                entity: sensor.grid_power
+                secondary_info: {}
+                display_state: one_way_no_zero
+                invert_state: false
+              home:
+                secondary_info: {}
+                icon: mdi:rv-truck
+                entity: sensor.total_concumption
+                circle_animation: true
+                subtract_individual: false
+              individual:
+                - entity: sensor.essential_loads
+                  secondary_info: {}
+                  icon: mdi:light-recessed
+                - entity: sensor.large_loads
+                  secondary_info: {}
+                  name: Large Loads
+                  icon: mdi:air-conditioner
+              solar:
+                secondary_info: {}
+                entity: sensor.alternator
+                name: Alternator
+                icon: mdi:engine
+            clickable_entities: true
+            display_zero_lines:
+              mode: grey_out
+              transparency: 50
+              grey_color:
+                - 189
+                - 189
+                - 189
+            use_new_flow_rate_model: true
+            w_decimals: 0
+            kw_decimals: 1
+            min_flow_rate: 0.75
+            max_flow_rate: 6
+            max_expected_power: 2000
+            min_expected_power: 0.01
+            watt_threshold: 1000
+            transparency_zero_lines: 0
+            sort_individual_devices: false
+      - type: grid
+        cards:
+          - type: heading
+            heading: Current Limit
+            heading_style: title
+          - type: entities
+            entities:
+              - entity: >-
+                  number.victron_mqtt_c0619ab72879_vebus_276_vebus_inverter_current_limit
+    cards: []
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Home
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/home
+        show_entity_picture: false
+        icon: mdi:home
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: Locks
+    path: locks
+    sections:
+      - type: grid
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            grid_options:
+              columns: 6
+              rows: 2
+            name: All
+            tap_action:
+              action: toggle
+            entity: lock.lock_0
+          - show_name: true
+            show_icon: true
+            type: button
+            entity: lock.lock_1
+            grid_options:
+              columns: 6
+              rows: 2
+            tap_action:
+              action: toggle
+          - type: custom:mushroom-title-card
+            title: Cargo
+            alignment: center
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                entity: lock.lock_2
+                tap_action:
+                  action: toggle
+              - show_name: true
+                show_icon: true
+                type: button
+                entity: lock.lock_3
+                tap_action:
+                  action: toggle
+    icon: mdi:lock
+    cards: []
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Home
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/home
+        show_entity_picture: false
+        icon: mdi:home
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
+        entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: Misc
+    path: misc
+    sections:
+      - type: grid
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            icon: mdi:power
+            grid_options:
+              columns: full
+            entity: light.switch_57
+    icon: mdi:cog-outline
+    cards: []
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: false
+        name: Home
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/home
+        show_entity_picture: false
+        icon: mdi:home
+        entity: zone.home
