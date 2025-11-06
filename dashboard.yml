@@ -1,113 +1,4 @@
 views:
-  - type: sections
-    max_columns: 4
-    title: Home
-    path: home
-    icon: mdi:home
-    sections:
-      - type: grid
-        cards:
-          - type: custom:mushroom-entity-card
-            entity: switch.water_pump
-            grid_options:
-              columns: 6
-              rows: 1
-            fill_container: false
-            primary_info: name
-            secondary_info: none
-            tap_action:
-              action: toggle
-          - type: custom:mushroom-entity-card
-            entity: switch.autofill
-            grid_options:
-              columns: 6
-              rows: 1
-            fill_container: false
-            primary_info: name
-            secondary_info: none
-            tap_action:
-              action: toggle
-          - type: gauge
-            entity: sensor.tank_fresh
-            name: Fresh Tank
-            severity:
-              green: 60
-              yellow: 40
-              red: 0
-          - type: gauge
-            entity: sensor.tank_gray
-            name: Black Tank
-            needle: false
-            severity:
-              green: 0
-              yellow: 50
-              red: 60
-          - type: gauge
-            entity: sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
-            name: House Battery
-            needle: false
-            severity:
-              green: 75
-              yellow: 25
-              red: 0
-    header: {}
-    cards: []
-    badges:
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Lights
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/lights
-        show_entity_picture: false
-        icon: mdi:light-recessed
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Shades
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/shades
-        show_entity_picture: false
-        icon: mdi:roller-shade
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Doors
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/doors
-        show_entity_picture: false
-        icon: mdi:door
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Energy
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/energy
-        show_entity_picture: false
-        icon: mdi:transmission-tower
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Locks
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/locks
-        show_entity_picture: false
-        icon: mdi:lock
-        entity: zone.home
   - type: masonry
     path: lights
     title: Lights
@@ -128,6 +19,10 @@ views:
                 secondary_info: none
                 entity: light.accents
                 name: Accents
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_12
+                name: Foor
             columns: 2
       - type: vertical-stack
         cards:
@@ -160,12 +55,6 @@ views:
                 entity: light.switch_10
                 secondary_info: none
                 name: Sconce psngr
-              - type: custom:mushroom-light-card
-                entity: light.accents
-                secondary_info: none
-              - type: custom:mushroom-light-card
-                entity: light.switch_12
-                secondary_info: none
             columns: 2
       - type: vertical-stack
         cards:
@@ -202,9 +91,6 @@ views:
                 secondary_info: none
                 entity: light.potty_all
               - type: custom:mushroom-light-card
-                secondary_info: none
-                entity: light.switch_48
-              - type: custom:mushroom-light-card
                 name: Ceiling
                 secondary_info: none
                 entity: light.switch_42
@@ -212,6 +98,9 @@ views:
                 name: Cabinet
                 secondary_info: none
                 entity: light.switch_43
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                entity: light.switch_48
             columns: 2
       - type: vertical-stack
         cards:
@@ -282,7 +171,7 @@ views:
               - type: custom:mushroom-light-card
                 secondary_info: none
                 entity: light.switch_5
-                name: Driver
+                name: Entry
               - type: custom:mushroom-light-card
                 name: Living Room
                 secondary_info: none
@@ -334,18 +223,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
-        name: Home
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/home
-        show_entity_picture: false
-        icon: mdi:home
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
+        show_icon: true
         name: Shades
         tap_action:
           action: navigate
@@ -356,7 +234,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
+        show_icon: true
         name: Doors
         tap_action:
           action: navigate
@@ -367,24 +245,46 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
-        name: Energy
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/energy
-        show_entity_picture: false
-        icon: mdi:transmission-tower
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
+        show_icon: true
         name: Locks
         tap_action:
           action: navigate
           navigation_path: /rv-link/locks
         show_entity_picture: false
         icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Tanks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/tanks
+        show_entity_picture: false
+        icon: mdi:water
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
         entity: zone.home
   - type: sections
     max_columns: 4
@@ -579,18 +479,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
-        name: Home
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/home
-        show_entity_picture: false
-        icon: mdi:home
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
+        show_icon: true
         name: Lights
         tap_action:
           action: navigate
@@ -601,7 +490,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
+        show_icon: true
         name: Doors
         tap_action:
           action: navigate
@@ -612,7 +501,29 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
+        show_icon: true
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
         name: Energy
         tap_action:
           action: navigate
@@ -623,13 +534,13 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
-        name: Locks
+        show_icon: true
+        name: Tanks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/locks
+          navigation_path: /rv-link/tanks
         show_entity_picture: false
-        icon: mdi:lock
+        icon: mdi:water
         entity: zone.home
   - type: sections
     max_columns: 4
@@ -692,18 +603,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
-        name: Home
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/home
-        show_entity_picture: false
-        icon: mdi:home
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
+        show_icon: true
         name: Lights
         tap_action:
           action: navigate
@@ -714,7 +614,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
+        show_icon: true
         name: Shades
         tap_action:
           action: navigate
@@ -725,179 +625,46 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
+        show_icon: true
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Tanks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/tanks
+        show_entity_picture: false
+        icon: mdi:water
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
         name: Energy
         tap_action:
           action: navigate
           navigation_path: /rv-link/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Locks
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/locks
-        show_entity_picture: false
-        icon: mdi:lock
-        entity: zone.home
-  - type: sections
-    max_columns: 4
-    title: Energy
-    path: energy
-    icon: mdi:transmission-tower
-    sections:
-      - type: grid
-        cards:
-          - type: heading
-            icon: mdi:battery-high
-            heading: Batteries
-            heading_style: title
-          - type: gauge
-            entity: sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
-            min: 0
-            max: 100
-            needle: true
-            severity:
-              green: 75
-              yellow: 25
-              red: 0
-            name: House
-          - type: gauge
-            entity: >-
-              sensor.victron_mqtt_c0619ab72879_battery_277_auxiliary_battery_voltage
-            unit: V
-            min: 11.5
-            needle: true
-            severity:
-              green: 12
-              yellow: 14
-              red: 0
-            max: 14.5
-            name: Starter
-      - type: grid
-        cards:
-          - type: heading
-            icon: mdi:home-lightning-bolt-outline
-            heading: Power Flow
-            heading_style: title
-          - type: custom:power-flow-card-plus
-            entities:
-              battery:
-                entity: >-
-                  sensor.victron_mqtt_c0619ab72879_vebus_276_vebus_inverter_dc_power
-                state_of_charge: >-
-                  sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
-              grid:
-                entity: sensor.grid_power
-                secondary_info: {}
-                display_state: one_way_no_zero
-                invert_state: false
-              home:
-                secondary_info: {}
-                icon: mdi:rv-truck
-                entity: sensor.total_concumption
-                circle_animation: true
-                subtract_individual: false
-              individual:
-                - entity: sensor.essential_loads
-                  secondary_info: {}
-                  icon: mdi:light-recessed
-                - entity: sensor.large_loads
-                  secondary_info: {}
-                  name: Large Loads
-                  icon: mdi:air-conditioner
-              solar:
-                secondary_info: {}
-                entity: sensor.alternator
-                name: Alternator
-                icon: mdi:engine
-            clickable_entities: true
-            display_zero_lines:
-              mode: grey_out
-              transparency: 50
-              grey_color:
-                - 189
-                - 189
-                - 189
-            use_new_flow_rate_model: true
-            w_decimals: 0
-            kw_decimals: 1
-            min_flow_rate: 0.75
-            max_flow_rate: 6
-            max_expected_power: 2000
-            min_expected_power: 0.01
-            watt_threshold: 1000
-            transparency_zero_lines: 0
-            sort_individual_devices: false
-      - type: grid
-        cards:
-          - type: heading
-            heading: Current Limit
-            heading_style: title
-          - type: entities
-            entities:
-              - entity: >-
-                  number.victron_mqtt_c0619ab72879_vebus_276_vebus_inverter_current_limit
-    cards: []
-    badges:
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Home
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/home
-        show_entity_picture: false
-        icon: mdi:home
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Lights
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/lights
-        show_entity_picture: false
-        icon: mdi:light-recessed
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Shades
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/shades
-        show_entity_picture: false
-        icon: mdi:roller-shade
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Doors
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/doors
-        show_entity_picture: false
-        icon: mdi:door
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
-        name: Locks
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/locks
-        show_entity_picture: false
-        icon: mdi:lock
         entity: zone.home
   - type: sections
     max_columns: 4
@@ -948,18 +715,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
-        name: Home
-        tap_action:
-          action: navigate
-          navigation_path: /rv-link/home
-        show_entity_picture: false
-        icon: mdi:home
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: false
+        show_icon: true
         name: Lights
         tap_action:
           action: navigate
@@ -970,7 +726,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
+        show_icon: true
         name: Shades
         tap_action:
           action: navigate
@@ -981,7 +737,7 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
+        show_icon: true
         name: Doors
         tap_action:
           action: navigate
@@ -992,13 +748,565 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Tanks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/tanks
+        show_entity_picture: false
+        icon: mdi:water
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
         name: Energy
         tap_action:
           action: navigate
           navigation_path: /rv-link/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
+        entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: Heat
+    path: heat
+    icon: mdi:heat-wave
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Tanks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/tanks
+        show_entity_picture: false
+        icon: mdi:water
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
+        entity: zone.home
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Floor Heat
+            heading_style: title
+            icon: mdi:heating-coil
+          - type: thermostat
+            entity: climate.floor_heat_1
+            features:
+              - type: climate-hvac-modes
+              - type: climate-preset-modes
+                style: dropdown
+            name: Living Room
+          - type: thermostat
+            entity: climate.floor_heat_2
+            features:
+              - type: climate-hvac-modes
+              - type: climate-preset-modes
+                style: dropdown
+            name: Kitchen
+          - type: thermostat
+            entity: climate.floor_heat_3
+            features:
+              - type: climate-hvac-modes
+              - type: climate-preset-modes
+                style: dropdown
+            name: Bedroom
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: Aqua-Hot
+                alignment: center
+              - square: false
+                type: grid
+                cards:
+                  - type: custom:mushroom-light-card
+                    name: AC Element 1
+                    secondary_info: none
+                    entity: light.rv_link_aqua_hot_ac_element_1
+                  - type: custom:mushroom-light-card
+                    name: Diesel Burner
+                    secondary_info: none
+                    entity: light.rv_link_aqua_hot_diesel_burner
+                  - type: custom:mushroom-light-card
+                    name: AC Element 2
+                    secondary_info: none
+                    entity: light.rv_link_aqua_hot_ac_element_2
+                  - type: custom:mushroom-light-card
+                    secondary_info: none
+                    entity: light.rv_link_aqua_hot_engine_pre_heat
+                    name: Engine Pre-heat
+                columns: 2
+        column_span: 3
+    cards: []
+  - type: sections
+    max_columns: 4
+    title: tanks
+    path: tanks
+    icon: mdi:water
+    sections:
+      - type: grid
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: switch.water_pump
+            grid_options:
+              columns: 6
+              rows: 1
+            fill_container: false
+            primary_info: name
+            secondary_info: none
+            tap_action:
+              action: toggle
+            name: Water Pump
+          - type: custom:mushroom-entity-card
+            entity: switch.autofill
+            grid_options:
+              columns: 6
+              rows: 1
+            fill_container: false
+            primary_info: name
+            secondary_info: none
+            tap_action:
+              action: toggle
+            name: Autofill
+          - type: gauge
+            entity: sensor.tank_fresh
+            name: Fresh Tank
+            severity:
+              green: 60
+              yellow: 40
+              red: 0
+          - type: gauge
+            entity: sensor.tank_gray
+            name: Black Tank
+            needle: false
+            severity:
+              green: 0
+              yellow: 50
+              red: 60
+    header: {}
+    cards: []
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
+        entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: Energy
+    path: energy
+    icon: mdi:transmission-tower
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:car-battery
+            heading: Batteries
+            heading_style: title
+          - type: gauge
+            entity: sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
+            min: 0
+            max: 100
+            needle: true
+            severity:
+              green: 75
+              yellow: 25
+              red: 0
+            name: House
+          - type: gauge
+            entity: >-
+              sensor.victron_mqtt_c0619ab72879_battery_277_auxiliary_battery_voltage
+            unit: V
+            min: 11.5
+            needle: true
+            severity:
+              green: 12
+              yellow: 14
+              red: 0
+            max: 14.5
+            name: Starter
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:transmission-tower
+            heading: 120V Power Flow
+            heading_style: title
+          - type: custom:power-flow-card-plus
+            entities:
+              battery:
+                entity: >-
+                  sensor.victron_mqtt_c0619ab72879_vebus_276_vebus_inverter_dc_power
+                state_of_charge: >-
+                  sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
+                invert_state: true
+                icon: mdi:car-battery
+              grid:
+                entity:
+                  consumption: sensor.grid_power
+                secondary_info: {}
+                display_state: one_way_no_zero
+                invert_state: false
+              home:
+                secondary_info: {}
+                icon: mdi:rv-truck
+                circle_animation: true
+                subtract_individual: false
+              individual:
+                - entity: sensor.victron_mqtt_c0619ab72879_acload_0_acload_power
+                  secondary_info: {}
+                  icon: mdi:fridge
+                  name: Essential
+                - entity: sensor.large_loads
+                  secondary_info: {}
+                  icon: mdi:air-conditioner
+                  name: Discretionary
+              solar:
+                secondary_info: {}
+                icon: ""
+              fossil_fuel_percentage:
+                secondary_info: {}
+            clickable_entities: true
+            display_zero_lines:
+              mode: grey_out
+              transparency: 50
+              grey_color:
+                - 189
+                - 189
+                - 189
+            use_new_flow_rate_model: true
+            w_decimals: 0
+            kw_decimals: 1
+            max_flow_rate: 6
+            max_expected_power: 10000
+            min_expected_power: 0.01
+            watt_threshold: 1000
+            transparency_zero_lines: 0
+            sort_individual_devices: false
+            min_flow_rate: 1
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:car-battery
+            heading: 12V Power Flow
+            heading_style: title
+          - type: custom:power-flow-card-plus
+            entities:
+              battery:
+                entity:
+                  "0": s
+                  "1": e
+                  "2": "n"
+                  "3": s
+                  "4": o
+                  "5": r
+                  "6": .
+                  "7": v
+                  "8": i
+                  "9": c
+                  "10": t
+                  "11": r
+                  "12": o
+                  "13": "n"
+                  "14": _
+                  "15": m
+                  "16": q
+                  "17": t
+                  "18": t
+                  "19": _
+                  "20": c
+                  "21": "0"
+                  "22": "6"
+                  "23": "1"
+                  "24": "9"
+                  "25": a
+                  "26": b
+                  "27": "7"
+                  "28": "2"
+                  "29": "8"
+                  "30": "7"
+                  "31": "9"
+                  "32": _
+                  "33": v
+                  "34": e
+                  "35": b
+                  "36": u
+                  "37": s
+                  "38": _
+                  "39": "2"
+                  "40": "7"
+                  "41": "6"
+                  "42": _
+                  "43": v
+                  "44": e
+                  "45": b
+                  "46": u
+                  "47": s
+                  "48": _
+                  "49": i
+                  "50": "n"
+                  "51": v
+                  "52": e
+                  "53": r
+                  "54": t
+                  "55": e
+                  "56": r
+                  "57": _
+                  "58": d
+                  "59": c
+                  "60": _
+                  "61": p
+                  "62": o
+                  "63": w
+                  "64": e
+                  "65": r
+                  consumption: >-
+                    sensor.victron_mqtt_c0619ab72879_system_0_system_dc_consumption
+                  production: >-
+                    sensor.victron_mqtt_c0619ab72879_vebus_276_vebus_inverter_dc_power
+                state_of_charge: >-
+                  sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
+                invert_state: true
+                icon: mdi:car-battery
+              grid:
+                entity: {}
+                secondary_info: {}
+                display_state: one_way_no_zero
+                invert_state: false
+                icon: mdi:transmission-tower
+                name: Inverter
+              home:
+                secondary_info: {}
+                icon: mdi:rv-truck
+                circle_animation: true
+                subtract_individual: false
+              individual: []
+              solar:
+                secondary_info: {}
+                icon: ""
+              fossil_fuel_percentage:
+                secondary_info: {}
+            clickable_entities: true
+            display_zero_lines:
+              mode: hide
+              transparency: 50
+              grey_color:
+                - 189
+                - 189
+                - 189
+            use_new_flow_rate_model: true
+            w_decimals: 0
+            kw_decimals: 1
+            max_flow_rate: 6
+            max_expected_power: 10000
+            min_expected_power: 0.01
+            watt_threshold: 1000
+            transparency_zero_lines: 0
+            sort_individual_devices: false
+            min_flow_rate: 1
+      - type: grid
+        cards:
+          - type: heading
+            heading: Current Limit
+            heading_style: title
+          - type: entities
+            entities:
+              - entity: >-
+                  number.victron_mqtt_c0619ab72879_vebus_276_vebus_inverter_current_limit
+    cards: []
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Tanks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/tanks
+        show_entity_picture: false
+        icon: mdi:water
         entity: zone.home
   - type: sections
     max_columns: 4
@@ -1020,11 +1328,77 @@ views:
       - type: entity
         show_name: true
         show_state: false
-        show_icon: false
-        name: Home
+        show_icon: true
+        name: Lights
         tap_action:
           action: navigate
-          navigation_path: /rv-link/home
+          navigation_path: /rv-link/lights
         show_entity_picture: false
-        icon: mdi:home
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Tanks
+        tap_action:
+          action: navigate
+          navigation_path: /rv-link/tanks
+        show_entity_picture: false
+        icon: mdi:water
         entity: zone.home
