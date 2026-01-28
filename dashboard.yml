@@ -19,10 +19,14 @@ views:
                 secondary_info: none
                 entity: light.accents
                 name: Accents
+                tap_action:
+                  action: perform-action
+                  perform_action: script.accents_smart_toggle
+                  target: {}
               - type: custom:mushroom-light-card
                 secondary_info: none
                 entity: light.switch_12
-                name: Foor
+                name: Floor
             columns: 2
       - type: vertical-stack
         cards:
@@ -33,7 +37,7 @@ views:
             type: grid
             cards:
               - type: custom:mushroom-light-card
-                name: Celing
+                name: Celling
                 secondary_info: none
                 entity: light.switch_6
               - type: custom:mushroom-light-card
@@ -165,6 +169,10 @@ views:
             entity: light.accents
             secondary_info: none
             name: All accents
+            tap_action:
+              action: perform-action
+              perform_action: script.accents_smart_toggle
+              target: {}
           - square: false
             type: grid
             cards:
@@ -227,7 +235,7 @@ views:
         name: Shades
         tap_action:
           action: navigate
-          navigation_path: /rv-link/shades
+          navigation_path: /dashboard-librecoach/shades
         show_entity_picture: false
         icon: mdi:roller-shade
         entity: zone.home
@@ -238,7 +246,7 @@ views:
         name: Doors
         tap_action:
           action: navigate
-          navigation_path: /rv-link/doors
+          navigation_path: /dashboard-librecoach/doors
         show_entity_picture: false
         icon: mdi:door
         entity: zone.home
@@ -249,7 +257,7 @@ views:
         name: Locks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/locks
+          navigation_path: /dashboard-librecoach/locks
         show_entity_picture: false
         icon: mdi:lock
         entity: zone.home
@@ -260,9 +268,31 @@ views:
         name: Heat
         tap_action:
           action: navigate
-          navigation_path: /rv-link/heat
+          navigation_path: /dashboard-librecoach/heat
         show_entity_picture: false
         icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: AC
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/ac
+        show_entity_picture: false
+        icon: mdi:air-conditioner
         entity: zone.home
       - type: entity
         show_name: true
@@ -271,7 +301,7 @@ views:
         name: Tanks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/tanks
+          navigation_path: /dashboard-librecoach/tanks
         show_entity_picture: false
         icon: mdi:water
         entity: zone.home
@@ -282,10 +312,11 @@ views:
         name: Energy
         tap_action:
           action: navigate
-          navigation_path: /rv-link/energy
+          navigation_path: /dashboard-librecoach/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
         entity: zone.home
+    subview: false
   - type: sections
     max_columns: 4
     title: Shades
@@ -475,6 +506,7 @@ views:
             grid_options:
               columns: 6
               rows: auto
+        column_span: 1
     badges:
       - type: entity
         show_name: true
@@ -483,7 +515,7 @@ views:
         name: Lights
         tap_action:
           action: navigate
-          navigation_path: /rv-link/lights
+          navigation_path: /dashboard-librecoach/lights
         show_entity_picture: false
         icon: mdi:light-recessed
         entity: zone.home
@@ -494,7 +526,7 @@ views:
         name: Doors
         tap_action:
           action: navigate
-          navigation_path: /rv-link/doors
+          navigation_path: /dashboard-librecoach/doors
         show_entity_picture: false
         icon: mdi:door
         entity: zone.home
@@ -505,7 +537,7 @@ views:
         name: Locks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/locks
+          navigation_path: /dashboard-librecoach/locks
         show_entity_picture: false
         icon: mdi:lock
         entity: zone.home
@@ -516,9 +548,20 @@ views:
         name: Heat
         tap_action:
           action: navigate
-          navigation_path: /rv-link/heat
+          navigation_path: /dashboard-librecoach/heat
         show_entity_picture: false
         icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: AC
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/ac
+        show_entity_picture: false
+        icon: mdi:air-conditioner
         entity: zone.home
       - type: entity
         show_name: true
@@ -527,7 +570,7 @@ views:
         name: Energy
         tap_action:
           action: navigate
-          navigation_path: /rv-link/energy
+          navigation_path: /dashboard-librecoach/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
         entity: zone.home
@@ -538,10 +581,12 @@ views:
         name: Tanks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/tanks
+          navigation_path: /dashboard-librecoach/tanks
         show_entity_picture: false
         icon: mdi:water
         entity: zone.home
+    subview: false
+    cards: []
   - type: sections
     max_columns: 4
     title: Doors
@@ -607,7 +652,7 @@ views:
         name: Lights
         tap_action:
           action: navigate
-          navigation_path: /rv-link/lights
+          navigation_path: /dashboard-librecoach/lights
         show_entity_picture: false
         icon: mdi:light-recessed
         entity: zone.home
@@ -618,7 +663,7 @@ views:
         name: Shades
         tap_action:
           action: navigate
-          navigation_path: /rv-link/shades
+          navigation_path: /dashboard-librecoach/shades
         show_entity_picture: false
         icon: mdi:roller-shade
         entity: zone.home
@@ -629,7 +674,7 @@ views:
         name: Locks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/locks
+          navigation_path: /dashboard-librecoach/locks
         show_entity_picture: false
         icon: mdi:lock
         entity: zone.home
@@ -640,9 +685,20 @@ views:
         name: Heat
         tap_action:
           action: navigate
-          navigation_path: /rv-link/heat
+          navigation_path: /dashboard-librecoach/heat
         show_entity_picture: false
         icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: AC
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/ac
+        show_entity_picture: false
+        icon: mdi:air-conditioner
         entity: zone.home
       - type: entity
         show_name: true
@@ -651,7 +707,7 @@ views:
         name: Tanks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/tanks
+          navigation_path: /dashboard-librecoach/tanks
         show_entity_picture: false
         icon: mdi:water
         entity: zone.home
@@ -662,7 +718,7 @@ views:
         name: Energy
         tap_action:
           action: navigate
-          navigation_path: /rv-link/energy
+          navigation_path: /dashboard-librecoach/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
         entity: zone.home
@@ -719,7 +775,7 @@ views:
         name: Lights
         tap_action:
           action: navigate
-          navigation_path: /rv-link/lights
+          navigation_path: /dashboard-librecoach/lights
         show_entity_picture: false
         icon: mdi:light-recessed
         entity: zone.home
@@ -730,7 +786,7 @@ views:
         name: Shades
         tap_action:
           action: navigate
-          navigation_path: /rv-link/shades
+          navigation_path: /dashboard-librecoach/shades
         show_entity_picture: false
         icon: mdi:roller-shade
         entity: zone.home
@@ -741,7 +797,7 @@ views:
         name: Doors
         tap_action:
           action: navigate
-          navigation_path: /rv-link/doors
+          navigation_path: /dashboard-librecoach/doors
         show_entity_picture: false
         icon: mdi:door
         entity: zone.home
@@ -752,9 +808,20 @@ views:
         name: Heat
         tap_action:
           action: navigate
-          navigation_path: /rv-link/heat
+          navigation_path: /dashboard-librecoach/heat
         show_entity_picture: false
         icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: AC
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/ac
+        show_entity_picture: false
+        icon: mdi:air-conditioner
         entity: zone.home
       - type: entity
         show_name: true
@@ -763,7 +830,7 @@ views:
         name: Tanks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/tanks
+          navigation_path: /dashboard-librecoach/tanks
         show_entity_picture: false
         icon: mdi:water
         entity: zone.home
@@ -774,7 +841,7 @@ views:
         name: Energy
         tap_action:
           action: navigate
-          navigation_path: /rv-link/energy
+          navigation_path: /dashboard-librecoach/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
         entity: zone.home
@@ -791,7 +858,7 @@ views:
         name: Lights
         tap_action:
           action: navigate
-          navigation_path: /rv-link/lights
+          navigation_path: /dashboard-librecoach/lights
         show_entity_picture: false
         icon: mdi:light-recessed
         entity: zone.home
@@ -802,7 +869,7 @@ views:
         name: Shades
         tap_action:
           action: navigate
-          navigation_path: /rv-link/shades
+          navigation_path: /dashboard-librecoach/shades
         show_entity_picture: false
         icon: mdi:roller-shade
         entity: zone.home
@@ -813,7 +880,7 @@ views:
         name: Doors
         tap_action:
           action: navigate
-          navigation_path: /rv-link/doors
+          navigation_path: /dashboard-librecoach/doors
         show_entity_picture: false
         icon: mdi:door
         entity: zone.home
@@ -824,9 +891,20 @@ views:
         name: Locks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/locks
+          navigation_path: /dashboard-librecoach/locks
         show_entity_picture: false
         icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: AC
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/ac
+        show_entity_picture: false
+        icon: mdi:air-conditioner
         entity: zone.home
       - type: entity
         show_name: true
@@ -835,7 +913,7 @@ views:
         name: Tanks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/tanks
+          navigation_path: /dashboard-librecoach/tanks
         show_entity_picture: false
         icon: mdi:water
         entity: zone.home
@@ -846,11 +924,72 @@ views:
         name: Energy
         tap_action:
           action: navigate
-          navigation_path: /rv-link/energy
+          navigation_path: /dashboard-librecoach/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
         entity: zone.home
     sections:
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: Aqua-Hot
+                alignment: center
+              - square: false
+                type: grid
+                cards:
+                  - type: custom:mushroom-light-card
+                    name: AC Element 1
+                    secondary_info: none
+                    entity: light.aquahot_ac_1
+                  - type: custom:mushroom-light-card
+                    name: Diesel Burner
+                    secondary_info: none
+                    entity: light.aquahot_burner
+                  - type: custom:mushroom-light-card
+                    name: AC Element 2
+                    secondary_info: none
+                    entity: light.aquahot_ac_2
+                  - type: custom:mushroom-light-card
+                    secondary_info: none
+                    entity: light.aquahot_engine
+                    name: Engine Pre-heat
+                columns: 2
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: Temperature
+                alignment: center
+              - square: false
+                type: grid
+                cards:
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    entity: sensor.temperature_humidity_xs_sensor_air_temperature
+                    name:
+                      type: area
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    entity: sensor.bed_room_air_temperature
+                    name:
+                      type: area
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    entity: sensor.bathroom_air_temperature
+                    name:
+                      type: area
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    entity: sensor.one_air_temperature
+                    name:
+                      type: device
+                columns: 2
+        column_span: 3
       - type: grid
         cards:
           - type: heading
@@ -878,80 +1017,48 @@ views:
               - type: climate-preset-modes
                 style: dropdown
             name: Bedroom
-          - type: vertical-stack
-            cards:
-              - type: custom:mushroom-title-card
-                title: Aqua-Hot
-                alignment: center
-              - square: false
-                type: grid
-                cards:
-                  - type: custom:mushroom-light-card
-                    name: AC Element 1
-                    secondary_info: none
-                    entity: light.rv_link_aqua_hot_ac_element_1
-                  - type: custom:mushroom-light-card
-                    name: Diesel Burner
-                    secondary_info: none
-                    entity: light.rv_link_aqua_hot_diesel_burner
-                  - type: custom:mushroom-light-card
-                    name: AC Element 2
-                    secondary_info: none
-                    entity: light.rv_link_aqua_hot_ac_element_2
-                  - type: custom:mushroom-light-card
-                    secondary_info: none
-                    entity: light.rv_link_aqua_hot_engine_pre_heat
-                    name: Engine Pre-heat
-                columns: 2
         column_span: 3
     cards: []
   - type: sections
     max_columns: 4
-    title: tanks
-    path: tanks
-    icon: mdi:water
+    title: AC
+    path: ac
+    icon: mdi:air-conditioner
     sections:
       - type: grid
         cards:
-          - type: custom:mushroom-entity-card
-            entity: switch.water_pump
-            grid_options:
-              columns: 6
-              rows: 1
-            fill_container: false
-            primary_info: name
-            secondary_info: none
-            tap_action:
-              action: toggle
-            name: Water Pump
-          - type: custom:mushroom-entity-card
-            entity: switch.autofill
-            grid_options:
-              columns: 6
-              rows: 1
-            fill_container: false
-            primary_info: name
-            secondary_info: none
-            tap_action:
-              action: toggle
-            name: Autofill
-          - type: gauge
-            entity: sensor.tank_fresh
-            name: Fresh Tank
-            severity:
-              green: 60
-              yellow: 40
-              red: 0
-          - type: gauge
-            entity: sensor.tank_gray
-            name: Black Tank
-            needle: false
-            severity:
-              green: 0
-              yellow: 50
-              red: 60
-    header: {}
-    cards: []
+          - type: thermostat
+            entity: climate.easytouch_zone_0_zone_0
+            name:
+              type: device
+            features:
+              - type: climate-fan-modes
+                style: dropdown
+              - type: climate-hvac-modes
+          - type: thermostat
+            entity: climate.easytouch_zone_1_zone_1
+            name:
+              type: device
+            features:
+              - type: climate-fan-modes
+                style: dropdown
+              - type: climate-hvac-modes
+          - type: thermostat
+            entity: climate.easytouch_zone_2_zone_2
+            name:
+              type: device
+            features:
+              - type: climate-fan-modes
+                style: dropdown
+              - type: climate-hvac-modes
+          - type: thermostat
+            entity: climate.easytouch_zone_3_zone_3
+            name:
+              type: device
+            features:
+              - type: climate-fan-modes
+                style: dropdown
+              - type: climate-hvac-modes
     badges:
       - type: entity
         show_name: true
@@ -960,7 +1067,7 @@ views:
         name: Lights
         tap_action:
           action: navigate
-          navigation_path: /rv-link/lights
+          navigation_path: /dashboard-librecoach/lights
         show_entity_picture: false
         icon: mdi:light-recessed
         entity: zone.home
@@ -971,7 +1078,7 @@ views:
         name: Shades
         tap_action:
           action: navigate
-          navigation_path: /rv-link/shades
+          navigation_path: /dashboard-librecoach/shades
         show_entity_picture: false
         icon: mdi:roller-shade
         entity: zone.home
@@ -982,7 +1089,7 @@ views:
         name: Doors
         tap_action:
           action: navigate
-          navigation_path: /rv-link/doors
+          navigation_path: /dashboard-librecoach/doors
         show_entity_picture: false
         icon: mdi:door
         entity: zone.home
@@ -993,7 +1100,7 @@ views:
         name: Locks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/locks
+          navigation_path: /dashboard-librecoach/locks
         show_entity_picture: false
         icon: mdi:lock
         entity: zone.home
@@ -1004,7 +1111,7 @@ views:
         name: Heat
         tap_action:
           action: navigate
-          navigation_path: /rv-link/heat
+          navigation_path: /dashboard-librecoach/heat
         show_entity_picture: false
         icon: mdi:heat-wave
         entity: zone.home
@@ -1015,9 +1122,20 @@ views:
         name: Energy
         tap_action:
           action: navigate
-          navigation_path: /rv-link/energy
+          navigation_path: /dashboard-librecoach/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Tanks
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/tanks
+        show_entity_picture: false
+        icon: mdi:water
         entity: zone.home
   - type: sections
     max_columns: 4
@@ -1249,7 +1367,7 @@ views:
         name: Lights
         tap_action:
           action: navigate
-          navigation_path: /rv-link/lights
+          navigation_path: /dashboard-librecoach/lights
         show_entity_picture: false
         icon: mdi:light-recessed
         entity: zone.home
@@ -1260,7 +1378,7 @@ views:
         name: Shades
         tap_action:
           action: navigate
-          navigation_path: /rv-link/shades
+          navigation_path: /dashboard-librecoach/shades
         show_entity_picture: false
         icon: mdi:roller-shade
         entity: zone.home
@@ -1271,7 +1389,7 @@ views:
         name: Doors
         tap_action:
           action: navigate
-          navigation_path: /rv-link/doors
+          navigation_path: /dashboard-librecoach/doors
         show_entity_picture: false
         icon: mdi:door
         entity: zone.home
@@ -1282,7 +1400,7 @@ views:
         name: Locks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/locks
+          navigation_path: /dashboard-librecoach/locks
         show_entity_picture: false
         icon: mdi:lock
         entity: zone.home
@@ -1293,9 +1411,20 @@ views:
         name: Heat
         tap_action:
           action: navigate
-          navigation_path: /rv-link/heat
+          navigation_path: /dashboard-librecoach/heat
         show_entity_picture: false
         icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: AC
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/ac
+        show_entity_picture: false
+        icon: mdi:air-conditioner
         entity: zone.home
       - type: entity
         show_name: true
@@ -1304,9 +1433,134 @@ views:
         name: Tanks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/tanks
+          navigation_path: /dashboard-librecoach/tanks
         show_entity_picture: false
         icon: mdi:water
+        entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: tanks
+    path: tanks
+    icon: mdi:water
+    sections:
+      - type: grid
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: switch.water_pump
+            grid_options:
+              columns: 6
+              rows: 1
+            fill_container: false
+            primary_info: name
+            secondary_info: none
+            tap_action:
+              action: toggle
+            name: Water Pump
+          - type: custom:mushroom-entity-card
+            entity: switch.autofill
+            grid_options:
+              columns: 6
+              rows: 1
+            fill_container: false
+            primary_info: name
+            secondary_info: none
+            tap_action:
+              action: toggle
+            name: Autofill
+          - type: gauge
+            entity: sensor.tank_fresh
+            name: Fresh Tank
+            severity:
+              green: 60
+              yellow: 40
+              red: 0
+          - type: gauge
+            entity: sensor.tank_gray
+            name: Black Tank
+            needle: false
+            severity:
+              green: 0
+              yellow: 50
+              red: 60
+    header: {}
+    cards: []
+    badges:
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Lights
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/lights
+        show_entity_picture: false
+        icon: mdi:light-recessed
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Shades
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/shades
+        show_entity_picture: false
+        icon: mdi:roller-shade
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Doors
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/doors
+        show_entity_picture: false
+        icon: mdi:door
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Locks
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/locks
+        show_entity_picture: false
+        icon: mdi:lock
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Heat
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/heat
+        show_entity_picture: false
+        icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: AC
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/ac
+        show_entity_picture: false
+        icon: mdi:air-conditioner
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: Energy
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/energy
+        show_entity_picture: false
+        icon: mdi:transmission-tower
         entity: zone.home
   - type: sections
     max_columns: 4
@@ -1322,6 +1576,59 @@ views:
             grid_options:
               columns: full
             entity: light.switch_57
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: Temperature
+                alignment: center
+              - square: false
+                type: grid
+                cards:
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    entity: sensor.two_air_temperature
+                    name:
+                      type: device
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    entity: sensor.one_air_temperature
+                    name:
+                      type: device
+                columns: 2
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: Here We Are
+                alignment: center
+              - type: markdown
+                content: >-
+                  <center><h1>{{ now().strftime('%a&nbsp;%b&nbsp;%-d,
+                  %-I:%M&nbsp;%p')}}
+              - type: entities
+                entities:
+                  - entity: sensor.current_location
+                  - entity: sensor.current_timezone
+          - type: vertical-stack
+            cards:
+              - show_current: true
+                show_forecast: true
+                type: weather-forecast
+                entity: weather.khxd
+                forecast_type: twice_daily
+                forecast_slots: 5
+          - type: markdown
+            content: |2-
+                {% if is_state('binary_sensor.nws_alert_active','on') %}
+                {% set alerts = state_attr('sensor.nws_alerts_alerts','Alerts') %}
+                **{{ alerts[0].Headline }}**  
+                Severity: {{ alerts[0].Severity }}  
+                Expires: {{ alerts[0].Expires }}  
+                {% else %}
+                No active alerts.
+                {% endif %}
+            title: NWS Alerts
     icon: mdi:cog-outline
     cards: []
     badges:
@@ -1332,7 +1639,7 @@ views:
         name: Lights
         tap_action:
           action: navigate
-          navigation_path: /rv-link/lights
+          navigation_path: /dashboard-librecoach/lights
         show_entity_picture: false
         icon: mdi:light-recessed
         entity: zone.home
@@ -1343,7 +1650,7 @@ views:
         name: Shades
         tap_action:
           action: navigate
-          navigation_path: /rv-link/shades
+          navigation_path: /dashboard-librecoach/shades
         show_entity_picture: false
         icon: mdi:roller-shade
         entity: zone.home
@@ -1354,7 +1661,7 @@ views:
         name: Doors
         tap_action:
           action: navigate
-          navigation_path: /rv-link/doors
+          navigation_path: /dashboard-librecoach/doors
         show_entity_picture: false
         icon: mdi:door
         entity: zone.home
@@ -1365,7 +1672,7 @@ views:
         name: Locks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/locks
+          navigation_path: /dashboard-librecoach/locks
         show_entity_picture: false
         icon: mdi:lock
         entity: zone.home
@@ -1376,9 +1683,20 @@ views:
         name: Heat
         tap_action:
           action: navigate
-          navigation_path: /rv-link/heat
+          navigation_path: /dashboard-librecoach/heat
         show_entity_picture: false
         icon: mdi:heat-wave
+        entity: zone.home
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        name: AC
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-librecoach/ac
+        show_entity_picture: false
+        icon: mdi:air-conditioner
         entity: zone.home
       - type: entity
         show_name: true
@@ -1387,7 +1705,7 @@ views:
         name: Energy
         tap_action:
           action: navigate
-          navigation_path: /rv-link/energy
+          navigation_path: /dashboard-librecoach/energy
         show_entity_picture: false
         icon: mdi:transmission-tower
         entity: zone.home
@@ -1398,7 +1716,7 @@ views:
         name: Tanks
         tap_action:
           action: navigate
-          navigation_path: /rv-link/tanks
+          navigation_path: /dashboard-librecoach/tanks
         show_entity_picture: false
         icon: mdi:water
         entity: zone.home
