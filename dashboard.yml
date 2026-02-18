@@ -25,7 +25,7 @@ button_card_templates:
         - padding-left: clamp(2px, 0.4vw, 5px)
         - padding-right: clamp(2px, 0.4vw, 5px)
     state:
-      - value: "on"
+      - value: 'on'
         styles:
           card:
             - background-color: rgba(0, 95, 204, 0.25)
@@ -33,344 +33,16 @@ button_card_templates:
             - box-shadow: 0px 0px 8px rgba(0, 95, 204, 0.4)
             - transform: scale(1.05)
           name:
-            - color: "#005fcc"
+            - color: '#005fcc'
             - font-weight: 600
-      - value: "off"
+      - value: 'off'
         styles:
           card:
             - background-color: rgba(255, 59, 59, 0.2)
             - border: 1px solid rgba(255, 59, 59, 0.3)
           name:
-            - color: "#ff3b3b"
+            - color: '#ff3b3b'
 views:
-  - type: sections
-    max_columns: 4
-    title: Lighting
-    path: lighting
-    sections:
-      - type: grid
-        cards:
-          - type: custom:mod-card
-            card_mod:
-              style: |
-                ha-card {
-                  border: 1px solid var(--divider-color);
-                  border-radius: 12px;
-                  padding: 8px;
-                  height: fit-content;
-                  
-                  /* Default background (Dark Mode) */
-                  background: rgba(20, 20, 20, 0.85);
-                  backdrop-filter: blur(10px);
-                }
-                @media (prefers-color-scheme: light) {
-                  ha-card {
-                    background: rgba(255, 255, 255, 0.9) !important;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-                  }
-                }
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:mushroom-title-card
-                  title: Entry
-                  alignment: center
-                - type: grid
-                  columns: 4
-                  square: false
-                  cards:
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_4
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.accents
-                      tap_action:
-                        action: perform-action
-                        perform_action: script.accents_smart_toggle
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_3
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_58
-      - type: grid
-        cards:
-          - type: custom:mod-card
-            card_mod:
-              style: |
-                ha-card {
-                  border: 1px solid var(--divider-color);
-                  border-radius: 12px;
-                  padding: 8px;
-                  height: fit-content;
-                  
-                  /* Default background (Dark Mode) */
-                  background: rgba(20, 20, 20, 0.8);
-                  backdrop-filter: blur(10px);
-                }
-                @media (prefers-color-scheme: light) {
-                  ha-card {
-                    background: rgba(255, 255, 255, 0.9) !important;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-                  }
-                }
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:mushroom-title-card
-                  title: Living Room
-                  alignment: center
-                - type: grid
-                  columns: 4
-                  square: false
-                  cards:
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_6
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_8
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_50
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_9
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_52
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_10
-      - type: grid
-        cards:
-          - type: custom:mod-card
-            card_mod:
-              style: |
-                ha-card {
-                  border: 1px solid var(--divider-color);
-                  border-radius: 12px;
-                  padding: 8px;
-                  height: fit-content;
-                  
-                  /* Default background (Dark Mode) */
-                  background: rgba(20, 20, 20, 0.8);
-                  backdrop-filter: blur(10px);
-                }
-                @media (prefers-color-scheme: light) {
-                  ha-card {
-                    background: rgba(255, 255, 255, 0.9) !important;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-                  }
-                }
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:mushroom-title-card
-                  title: Kitchen
-                  alignment: center
-                - type: grid
-                  columns: 4
-                  square: false
-                  cards:
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_47
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_44
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_53
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_11
-      - type: grid
-        cards:
-          - type: custom:mod-card
-            card_mod:
-              style: |
-                ha-card {
-                  border: 1px solid var(--divider-color);
-                  border-radius: 12px;
-                  padding: 8px;
-                  height: fit-content;
-                  
-                  /* Default background (Dark Mode) */
-                  background: rgba(20, 20, 20, 0.8);
-                  backdrop-filter: blur(10px);
-                }
-                @media (prefers-color-scheme: light) {
-                  ha-card {
-                    background: rgba(255, 255, 255, 0.9) !important;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-                  }
-                }
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:mushroom-title-card
-                  title: Bedroom
-                  alignment: center
-                - type: grid
-                  columns: 4
-                  square: false
-                  cards:
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_45
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_46
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_20
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_33
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_36
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_37
-      - type: grid
-        cards:
-          - type: custom:mod-card
-            card_mod:
-              style: |
-                ha-card {
-                  border: 1px solid var(--divider-color);
-                  border-radius: 12px;
-                  padding: 8px;
-                  height: fit-content;
-                  
-                  /* Default background (Dark Mode) */
-                  background: rgba(20, 20, 20, 0.8);
-                  backdrop-filter: blur(10px);
-                }
-                @media (prefers-color-scheme: light) {
-                  ha-card {
-                    background: rgba(255, 255, 255, 0.9) !important;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-                  }
-                }
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:mushroom-title-card
-                  title: Bath
-                  alignment: center
-                - type: grid
-                  columns: 4
-                  square: false
-                  cards:
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_26
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_18
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_27
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_30
-      - type: grid
-        cards:
-          - type: custom:mod-card
-            card_mod:
-              style: |
-                ha-card {
-                  border: 1px solid var(--divider-color);
-                  border-radius: 12px;
-                  padding: 8px;
-                  height: fit-content;
-                  
-                  /* Default background (Dark Mode) */
-                  background: rgba(20, 20, 20, 0.8);
-                  backdrop-filter: blur(10px);
-                }
-                @media (prefers-color-scheme: light) {
-                  ha-card {
-                    background: rgba(255, 255, 255, 0.9) !important;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-                  }
-                }
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:mushroom-title-card
-                  title: Potty
-                  alignment: center
-                - type: grid
-                  columns: 4
-                  square: false
-                  cards:
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.potty_all
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_42
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_43
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_48
-      - type: grid
-        cards:
-          - type: custom:mod-card
-            card_mod:
-              style: |
-                ha-card {
-                  border: 1px solid var(--divider-color);
-                  border-radius: 12px;
-                  padding: 8px;
-                  height: fit-content;
-                  
-                  /* Default background (Dark Mode) */
-                  background: rgba(20, 20, 20, 0.8);
-                  backdrop-filter: blur(10px);
-                }
-                @media (prefers-color-scheme: light) {
-                  ha-card {
-                    background: rgba(255, 255, 255, 0.9) !important;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-                  }
-                }
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:mushroom-title-card
-                  title: Exterior
-                  alignment: center
-                - type: grid
-                  columns: 4
-                  square: false
-                  cards:
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_3
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_58
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_1
-                    - type: custom:button-card
-                      template: panel_light
-                      entity: light.switch_12
   - type: masonry
     path: lights
     title: Lights
@@ -423,6 +95,10 @@ views:
                 entity: light.switch_6
                 show_brightness_control: true
               - type: custom:mushroom-light-card
+                entity: light.switch_9
+                secondary_info: none
+                show_brightness_control: true
+              - type: custom:mushroom-light-card
                 name: Mirror
                 secondary_info: none
                 entity: light.switch_8
@@ -431,10 +107,6 @@ views:
                 name: Dinette
                 secondary_info: none
                 entity: light.switch_50
-                show_brightness_control: true
-              - type: custom:mushroom-light-card
-                entity: light.switch_9
-                secondary_info: none
                 show_brightness_control: true
               - type: custom:mushroom-light-card
                 secondary_info: none
@@ -690,17 +362,6 @@ views:
           navigation_path: /dashboard-librecoach/locks
         show_entity_picture: false
         icon: mdi:lock
-        entity: zone.home
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: true
-        name: Heat
-        tap_action:
-          action: navigate
-          navigation_path: /dashboard-librecoach/heat
-        show_entity_picture: false
-        icon: mdi:heat-wave
         entity: zone.home
       - type: entity
         show_name: true
@@ -1057,7 +718,7 @@ views:
                 show_icon: false
                 type: button
                 show_state: false
-                icon: ""
+                icon: ''
                 name: Open
                 entity: light.switch_28
               - show_name: true
@@ -1453,38 +1114,45 @@ views:
     sections:
       - type: grid
         cards:
-          - type: thermostat
-            entity: climate.easytouch_zone_0_zone_0
+          - type: entity
+            entity: sensor.librecoach_climate_outdoor_temperature
+            grid_options:
+              columns: 12
+              rows: 2
             name:
-              type: device
+              type: entity
+          - type: thermostat
             features:
               - type: climate-fan-modes
                 style: dropdown
               - type: climate-hvac-modes
-          - type: thermostat
-            entity: climate.easytouch_zone_1_zone_1
+            entity: climate.librecoach_climate_microair_zone_1
             name:
-              type: device
+              type: entity
+          - type: thermostat
             features:
               - type: climate-fan-modes
                 style: dropdown
               - type: climate-hvac-modes
-          - type: thermostat
-            entity: climate.easytouch_zone_2_zone_2
+            entity: climate.librecoach_climate_microair_zone_2
             name:
-              type: device
+              type: entity
+          - type: thermostat
             features:
               - type: climate-fan-modes
                 style: dropdown
               - type: climate-hvac-modes
-          - type: thermostat
-            entity: climate.easytouch_zone_3_zone_3
+            entity: climate.librecoach_climate_microair_zone_3
             name:
-              type: device
+              type: entity
+          - type: thermostat
             features:
               - type: climate-fan-modes
                 style: dropdown
               - type: climate-hvac-modes
+            entity: climate.librecoach_climate_microair_zone_4
+            name:
+              type: entity
     badges:
       - type: entity
         show_name: true
@@ -1604,79 +1272,12 @@ views:
           - type: custom:power-flow-card-plus
             entities:
               battery:
-                entity:
-                  "0": s
-                  "1": e
-                  "2": "n"
-                  "3": s
-                  "4": o
-                  "5": r
-                  "6": .
-                  "7": v
-                  "8": i
-                  "9": c
-                  "10": t
-                  "11": r
-                  "12": o
-                  "13": "n"
-                  "14": _
-                  "15": m
-                  "16": q
-                  "17": t
-                  "18": t
-                  "19": _
-                  "20": c
-                  "21": "0"
-                  "22": "6"
-                  "23": "1"
-                  "24": "9"
-                  "25": a
-                  "26": b
-                  "27": "7"
-                  "28": "2"
-                  "29": "8"
-                  "30": "7"
-                  "31": "9"
-                  "32": _
-                  "33": v
-                  "34": e
-                  "35": b
-                  "36": u
-                  "37": s
-                  "38": _
-                  "39": "2"
-                  "40": "7"
-                  "41": "6"
-                  "42": _
-                  "43": v
-                  "44": e
-                  "45": b
-                  "46": u
-                  "47": s
-                  "48": _
-                  "49": i
-                  "50": "n"
-                  "51": v
-                  "52": e
-                  "53": r
-                  "54": t
-                  "55": e
-                  "56": r
-                  "57": _
-                  "58": d
-                  "59": c
-                  "60": _
-                  "61": p
-                  "62": o
-                  "63": w
-                  "64": e
-                  "65": r
-                  consumption: sensor.house_dc
-                  production: sensor.victron_vebus_276_dc_0_power
                 state_of_charge: >-
                   sensor.victron_mqtt_c0619ab72879_system_0_system_dc_battery_soc
                 invert_state: true
                 icon: mdi:car-battery
+                entity:
+                  production: sensor.victron_multiplus_ii_276_dc_0_power
               grid:
                 secondary_info: {}
                 display_state: one_way_no_zero
@@ -1687,24 +1288,25 @@ views:
                 icon: mdi:rv-truck
                 circle_animation: true
                 subtract_individual: false
-                entity: sensor.victron_multiplus_ii_276_ac_out_total_p
+                override_state: false
+                use_metadata: false
               individual:
-                - entity: sensor.victron_mqtt_c0619ab72879_acload_0_acload_power
+                - entity: sensor.victron_energy_meter_0_ac_power
                   secondary_info: {}
-                  icon: mdi:fridge
-                  name: Essential
-                - entity: sensor.large_loads
-                  secondary_info: {}
-                  icon: mdi:air-conditioner
                   name: Discretionary
+                  icon: mdi:air-conditioner
+                - entity: sensor.victron_multiplus_ii_276_ac_out_total_p
+                  secondary_info: {}
+                  name: Essential
+                  icon: mdi:lightbulb
               solar:
                 secondary_info: {}
-                icon: ""
+                icon: ''
               fossil_fuel_percentage:
                 secondary_info: {}
-            clickable_entities: true
+            clickable_entities: false
             display_zero_lines:
-              mode: grey_out
+              mode: hide
               transparency: 50
               grey_color:
                 - 189
@@ -1753,7 +1355,7 @@ views:
               individual: []
               solar:
                 secondary_info: {}
-                icon: ""
+                icon: ''
               fossil_fuel_percentage:
                 secondary_info: {}
             clickable_entities: true
@@ -2006,6 +1608,13 @@ views:
               - type: custom:mushroom-title-card
                 title: Temperature
                 alignment: center
+              - type: entity
+                entity: sensor.librecoach_climate_outdoor_temperature
+                grid_options:
+                  columns: 12
+                  rows: 2
+                name:
+                  type: entity
               - square: false
                 type: grid
                 cards:
@@ -2145,3 +1754,331 @@ views:
         show_entity_picture: false
         icon: mdi:water
         entity: zone.home
+  - type: sections
+    max_columns: 4
+    title: Lighting
+    path: lighting
+    sections:
+      - type: grid
+        cards:
+          - type: custom:mod-card
+            card_mod:
+              style: |
+                ha-card {
+                  border: 1px solid var(--divider-color);
+                  border-radius: 12px;
+                  padding: 8px;
+                  height: fit-content;
+                  
+                  /* Default background (Dark Mode) */
+                  background: rgba(20, 20, 20, 0.85);
+                  backdrop-filter: blur(10px);
+                }
+                @media (prefers-color-scheme: light) {
+                  ha-card {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                  }
+                }
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:mushroom-title-card
+                  title: Entry
+                  alignment: center
+                - type: grid
+                  columns: 4
+                  square: false
+                  cards:
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_4
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.accents
+                      tap_action:
+                        action: perform-action
+                        perform_action: script.accents_smart_toggle
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_3
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_58
+      - type: grid
+        cards:
+          - type: custom:mod-card
+            card_mod:
+              style: |
+                ha-card {
+                  border: 1px solid var(--divider-color);
+                  border-radius: 12px;
+                  padding: 8px;
+                  height: fit-content;
+                  
+                  /* Default background (Dark Mode) */
+                  background: rgba(20, 20, 20, 0.8);
+                  backdrop-filter: blur(10px);
+                }
+                @media (prefers-color-scheme: light) {
+                  ha-card {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                  }
+                }
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:mushroom-title-card
+                  title: Living Room
+                  alignment: center
+                - type: grid
+                  columns: 4
+                  square: false
+                  cards:
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_6
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_8
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_50
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_9
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_52
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_10
+      - type: grid
+        cards:
+          - type: custom:mod-card
+            card_mod:
+              style: |
+                ha-card {
+                  border: 1px solid var(--divider-color);
+                  border-radius: 12px;
+                  padding: 8px;
+                  height: fit-content;
+                  
+                  /* Default background (Dark Mode) */
+                  background: rgba(20, 20, 20, 0.8);
+                  backdrop-filter: blur(10px);
+                }
+                @media (prefers-color-scheme: light) {
+                  ha-card {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                  }
+                }
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:mushroom-title-card
+                  title: Kitchen
+                  alignment: center
+                - type: grid
+                  columns: 4
+                  square: false
+                  cards:
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_47
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_44
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_53
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_11
+      - type: grid
+        cards:
+          - type: custom:mod-card
+            card_mod:
+              style: |
+                ha-card {
+                  border: 1px solid var(--divider-color);
+                  border-radius: 12px;
+                  padding: 8px;
+                  height: fit-content;
+                  
+                  /* Default background (Dark Mode) */
+                  background: rgba(20, 20, 20, 0.8);
+                  backdrop-filter: blur(10px);
+                }
+                @media (prefers-color-scheme: light) {
+                  ha-card {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                  }
+                }
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:mushroom-title-card
+                  title: Bedroom
+                  alignment: center
+                - type: grid
+                  columns: 4
+                  square: false
+                  cards:
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_45
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_46
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_20
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_33
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_36
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_37
+      - type: grid
+        cards:
+          - type: custom:mod-card
+            card_mod:
+              style: |
+                ha-card {
+                  border: 1px solid var(--divider-color);
+                  border-radius: 12px;
+                  padding: 8px;
+                  height: fit-content;
+                  
+                  /* Default background (Dark Mode) */
+                  background: rgba(20, 20, 20, 0.8);
+                  backdrop-filter: blur(10px);
+                }
+                @media (prefers-color-scheme: light) {
+                  ha-card {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                  }
+                }
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:mushroom-title-card
+                  title: Bath
+                  alignment: center
+                - type: grid
+                  columns: 4
+                  square: false
+                  cards:
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_26
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_18
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_27
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_30
+      - type: grid
+        cards:
+          - type: custom:mod-card
+            card_mod:
+              style: |
+                ha-card {
+                  border: 1px solid var(--divider-color);
+                  border-radius: 12px;
+                  padding: 8px;
+                  height: fit-content;
+                  
+                  /* Default background (Dark Mode) */
+                  background: rgba(20, 20, 20, 0.8);
+                  backdrop-filter: blur(10px);
+                }
+                @media (prefers-color-scheme: light) {
+                  ha-card {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                  }
+                }
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:mushroom-title-card
+                  title: Potty
+                  alignment: center
+                - type: grid
+                  columns: 4
+                  square: false
+                  cards:
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.potty_all
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_42
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_43
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_48
+      - type: grid
+        cards:
+          - type: custom:mod-card
+            card_mod:
+              style: |
+                ha-card {
+                  border: 1px solid var(--divider-color);
+                  border-radius: 12px;
+                  padding: 8px;
+                  height: fit-content;
+                  
+                  /* Default background (Dark Mode) */
+                  background: rgba(20, 20, 20, 0.8);
+                  backdrop-filter: blur(10px);
+                }
+                @media (prefers-color-scheme: light) {
+                  ha-card {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                  }
+                }
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:mushroom-title-card
+                  title: Exterior
+                  alignment: center
+                - type: grid
+                  columns: 4
+                  square: false
+                  cards:
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_3
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_58
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_1
+                    - type: custom:button-card
+                      template: panel_light
+                      entity: light.switch_12
