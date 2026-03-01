@@ -1503,7 +1503,7 @@ views:
               yellow: 40
               red: 0
           - type: gauge
-            entity: sensor.tank_gray
+            entity: sensor.tank_black
             name: Black Tank
             needle: false
             severity:
