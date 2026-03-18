@@ -62,6 +62,13 @@ views:
                     secondary_info: none
                     entity: light.switch_4
                     show_brightness_control: true
+                    fill_container: false
+                    use_light_color: false
+                    collapsible_controls: false
+                  - type: custom:mushroom-light-card
+                    secondary_info: none
+                    show_brightness_control: false
+                    entity: light.switch_g_1
                 columns: 1
               - square: false
                 type: grid
@@ -215,6 +222,10 @@ views:
                 entity: light.switch_37
                 secondary_info: none
                 show_brightness_control: true
+              - type: custom:mushroom-light-card
+                secondary_info: none
+                show_brightness_control: false
+                entity: light.switch_g_2
             columns: 2
       - type: vertical-stack
         cards:
@@ -327,7 +338,7 @@ views:
                   - type: custom:mushroom-light-card
                     secondary_info: none
                     entity: light.switch_1
-                    show_brightness_control: true
+                    show_brightness_control: false
                 columns: 1
     badges:
       - type: entity
@@ -1054,27 +1065,27 @@ views:
                   - graph: none
                     type: sensor
                     detail: 1
-                    entity: sensor.temperature_humidity_xs_sensor_air_temperature
+                    name:
+                      type: area
+                    entity: sensor.living_room_temp_air_temperature
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    name:
+                      type: area
+                    entity: sensor.bedroom_temp_air_temperature
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    entity: sensor.bathroom_temp_air_temperature
                     name:
                       type: area
                   - graph: none
                     type: sensor
                     detail: 1
-                    entity: sensor.bed_room_air_temperature
                     name:
                       type: area
-                  - graph: none
-                    type: sensor
-                    detail: 1
-                    entity: sensor.bathroom_air_temperature
-                    name:
-                      type: area
-                  - graph: none
-                    type: sensor
-                    detail: 1
-                    entity: sensor.one_air_temperature
-                    name:
-                      type: device
+                    entity: sensor.temperature_outdoor
                 columns: 2
         column_span: 3
       - type: grid
@@ -1114,18 +1125,45 @@ views:
     sections:
       - type: grid
         cards:
-          - type: entity
-            entity: sensor.librecoach_climate_outdoor_temperature
-            grid_options:
-              columns: 12
-              rows: 2
-            name:
-              type: entity
+          - show_name: true
+            show_icon: false
+            show_state: true
+            type: glance
+            entities:
+              - entity: sensor.living_room_temp_air_temperature
+                name:
+                  type: area
+              - entity: sensor.bedroom_temp_air_temperature
+                name:
+                  type: area
+              - entity: sensor.bathroom_temp_air_temperature
+                name:
+                  type: area
+              - entity: sensor.temperature_outdoor
+                name: Outdoor
+            title: Temperature
+          - show_name: true
+            show_icon: false
+            show_state: true
+            type: glance
+            entities:
+              - entity: sensor.living_room_temp_humidity
+                name:
+                  type: area
+              - entity: sensor.bedroom_temp_humidity
+                name:
+                  type: area
+              - entity: sensor.bathroom_temp_humidity
+                name:
+                  type: area
+            title: Humidity
           - type: thermostat
             features:
               - type: climate-fan-modes
                 style: dropdown
               - type: climate-hvac-modes
+              - type: climate-preset-modes
+                style: dropdown
             entity: climate.librecoach_climate_microair_zone_1
             name:
               type: entity
@@ -1134,6 +1172,8 @@ views:
               - type: climate-fan-modes
                 style: dropdown
               - type: climate-hvac-modes
+              - type: climate-preset-modes
+                style: dropdown
             entity: climate.librecoach_climate_microair_zone_2
             name:
               type: entity
@@ -1142,6 +1182,8 @@ views:
               - type: climate-fan-modes
                 style: dropdown
               - type: climate-hvac-modes
+              - type: climate-preset-modes
+                style: dropdown
             entity: climate.librecoach_climate_microair_zone_3
             name:
               type: entity
@@ -1150,9 +1192,14 @@ views:
               - type: climate-fan-modes
                 style: dropdown
               - type: climate-hvac-modes
+              - type: climate-preset-modes
+                style: dropdown
             entity: climate.librecoach_climate_microair_zone_4
             name:
               type: entity
+        column_span: 2
+      - type: grid
+        cards: []
     badges:
       - type: entity
         show_name: true
@@ -1252,9 +1299,8 @@ views:
               yellow: 25
               red: 0
             name: House
-            entity: sensor.victron_system_0_dc_battery_soc
+            entity: sensor.librecoach_victron_system_battery_state_of_charge
           - type: gauge
-            entity: sensor.victron_smartshunt_ip65_277_dc_1_voltage
             needle: true
             severity:
               green: 12
@@ -1263,6 +1309,8 @@ views:
             min: 11.5
             max: 14.5
             name: Starter
+            entity: >-
+              sensor.librecoach_victron_smartshunt_ip65_auxiliary_battery_voltage
       - type: grid
         cards:
           - type: heading
@@ -1277,12 +1325,14 @@ views:
                 invert_state: true
                 icon: mdi:car-battery
                 entity:
-                  production: sensor.victron_multiplus_ii_276_dc_0_power
+                  production: sensor.librecoach_victron_multiplus_ii_inverter_dc_power
+                  consumption: sensor.librecoach_victron_system_dc_loads_power
+                display_state: two_way
               grid:
                 secondary_info: {}
                 display_state: one_way_no_zero
                 invert_state: false
-                entity: sensor.victron_system_0_ac_grid_total_power
+                entity: sensor.librecoach_victron_system_shore_power_total
               home:
                 secondary_info: {}
                 icon: mdi:rv-truck
@@ -1291,11 +1341,11 @@ views:
                 override_state: false
                 use_metadata: false
               individual:
-                - entity: sensor.victron_energy_meter_0_ac_power
+                - entity: sensor.librecoach_victron_energy_meter_total_power
                   secondary_info: {}
                   name: Discretionary
                   icon: mdi:air-conditioner
-                - entity: sensor.victron_multiplus_ii_276_ac_out_total_p
+                - entity: sensor.librecoach_victron_multiplus_ii_ac_output_total_power
                   secondary_info: {}
                   name: Essential
                   icon: mdi:lightbulb
@@ -1337,8 +1387,8 @@ views:
                 show_state_of_charge: false
                 state_of_charge_unit_white_space: true
                 entity:
-                  consumption: sensor.victron_system_0_dc_system_power
-                  production: sensor.victron_multiplus_ii_276_dc_0_power
+                  consumption: sensor.librecoach_victron_system_dc_loads_power
+                  production: sensor.librecoach_victron_multiplus_ii_inverter_dc_power
               grid:
                 secondary_info: {}
                 display_state: one_way_no_zero
@@ -1383,9 +1433,10 @@ views:
             heading_style: title
           - type: entities
             entities:
-              - entity: sensor.victron_multiplus_ii_276_ac_in_currentlimit
-                name:
-                  type: entity
+              - entity: number.librecoach_victron_multiplus_ii_shore_power_limit
+                name: Shore Power Limit
+              - entity: select.librecoach_victron_multiplus_ii_inverter_mode
+                name: Inverter Mode
     cards: []
     badges:
       - type: entity
@@ -1503,13 +1554,36 @@ views:
               yellow: 40
               red: 0
           - type: gauge
-            entity: sensor.tank_black
             name: Black Tank
             needle: false
             severity:
               green: 0
               yellow: 50
               red: 60
+            entity: sensor.tank_black
+          - type: custom:mushroom-title-card
+            title: Dump Valve
+            alignment: center
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                secondary_info: state
+                entity: switch.universal_relay_1
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-light-card
+                secondary_info: state
+                entity: switch.universal_relay_2
+            columns: 1
+            grid_options:
+              columns: 6
+              rows: auto
     header: {}
     cards: []
     badges:
@@ -1597,62 +1671,16 @@ views:
     sections:
       - type: grid
         cards:
-          - show_name: true
-            show_icon: true
-            type: button
-            icon: mdi:power
-            grid_options:
-              columns: full
-            entity: light.switch_57
-          - type: vertical-stack
-            cards:
-              - type: custom:mushroom-title-card
-                title: Temperature
-                alignment: center
-              - type: entity
-                entity: sensor.librecoach_climate_outdoor_temperature
-                grid_options:
-                  columns: 12
-                  rows: 2
-                name:
-                  type: entity
-              - square: false
-                type: grid
-                cards:
-                  - graph: none
-                    type: sensor
-                    detail: 1
-                    entity: sensor.two_air_temperature
-                    name:
-                      type: device
-                  - graph: none
-                    type: sensor
-                    detail: 1
-                    entity: sensor.one_air_temperature
-                    name:
-                      type: device
-                columns: 2
           - type: vertical-stack
             cards:
               - type: custom:mushroom-title-card
                 title: Here We Are
                 alignment: center
-              - type: markdown
-                content: >-
-                  <center><h1>{{ now().strftime('%a&nbsp;%b&nbsp;%-d,
-                  %-I:%M&nbsp;%p')}}
               - type: entities
                 entities:
-                  - entity: sensor.current_location
-                  - entity: sensor.current_timezone
-          - type: vertical-stack
-            cards:
-              - show_current: true
-                show_forecast: true
-                type: weather-forecast
-                entity: weather.khxd
-                forecast_type: twice_daily
-                forecast_slots: 5
+                  - entity: sensor.geo_timezone
+                  - entity: sensor.geo_city
+                  - entity: sensor.geo_state
           - type: markdown
             content: |2-
                 {% if is_state('binary_sensor.nws_alert_active','on') %}
@@ -1664,6 +1692,66 @@ views:
                 No active alerts.
                 {% endif %}
             title: Weather Alerts
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: Tools
+                alignment: center
+              - type: entities
+                entities:
+                  - entity: switch.librecoach_record_unknown
+                    name:
+                      type: entity
+                  - entity: button.librecoach_export_unknown
+                    name:
+                      type: entity
+          - type: custom:mushroom-light-card
+            secondary_info: none
+            show_brightness_control: false
+            entity: light.switch_g_2
+          - type: custom:mushroom-light-card
+            secondary_info: none
+            show_brightness_control: false
+            entity: light.switch_g_1
+          - show_name: true
+            show_icon: true
+            type: button
+            icon: mdi:power
+            grid_options:
+              columns: full
+            entity: light.switch_57
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: Temperature
+                alignment: center
+              - type: entity
+                entity: sensor.temperature_outdoor
+                grid_options:
+                  columns: 12
+                  rows: 2
+                name:
+                  type: entity
+              - square: false
+                type: grid
+                cards:
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    entity: sensor.utility_bay_temp_air_temperature
+                    name:
+                      type: device
+                  - graph: none
+                    type: sensor
+                    detail: 1
+                    name:
+                      type: device
+                    entity: sensor.water_pump_temp_air_temperature
+                columns: 2
     icon: mdi:cog-outline
     cards: []
     badges:
@@ -2083,3 +2171,41 @@ views:
                     - type: custom:button-card
                       template: panel_light
                       entity: light.switch_12
+  - type: sections
+    max_columns: 4
+    title: Hardware
+    path: hardware
+    sections:
+      - type: grid
+        cards:
+          - type: history-graph
+            entities:
+              - entity: sensor.system_monitor_processor_temperature
+            hours_to_show: 3
+          - type: history-graph
+            entities:
+              - entity: sensor.system_monitor_pwmfan_fan_speed
+            hours_to_show: 3
+          - type: history-graph
+            entities:
+              - entity: sensor.system_monitor_processor_use
+            hours_to_show: 3
+          - type: entities
+            entities:
+              - entity: sensor.system_monitor_processor_temperature
+              - entity: sensor.system_monitor_processor_use
+              - entity: sensor.system_monitor_pwmfan_fan_speed
+            grid_options:
+              columns: 12
+              rows: auto
+          - type: entities
+            entities:
+              - entity: sensor.system_monitor_memory_usage
+              - entity: sensor.system_monitor_memory_use
+              - entity: sensor.system_monitor_memory_free
+            grid_options:
+              columns: 12
+              rows: auto
+          - type: heading
+            heading: New section
+        column_span: 3
